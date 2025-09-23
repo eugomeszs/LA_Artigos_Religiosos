@@ -5,6 +5,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProdutoController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,5 +20,7 @@ use App\Http\Controllers\ProdutoController;
 /*Route::resource('cliente', ClienteController::class 'clientes');*/
 
 Route::resource('cliente', ClienteController::class);
+Route::resource('clientes', ClienteController::class);
 Route::resource('categoria', CategoriaController::class);
 Route::resource('produto', ProdutoController::class);
+

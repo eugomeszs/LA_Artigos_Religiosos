@@ -1,4 +1,4 @@
-@extends('base') 
+@extends('base')
 @section('titulo', 'Formulário Cliente')
 @section('conteudo')
 
@@ -19,55 +19,54 @@
 
         <input type="hidden" name="id" value="{{ old('id', $dado->id ?? '') }}">
 
-        <div class="row">
-    <div class="col">
-        <label for="">Nome</label>
-        <input type="text" name="nome" value="{{ old('nome', $dado->nome ?? '') }}">
-        @error('nome')
-            <div class="text-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="col">
-        <label for="">CPF</label>
-        <input type="text" name="cpf" value="{{ old('cpf', $dado->cpf ?? '') }}">
-        @error('cpf')
-            <div class="text-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="col">
-        <label for="">Telefone</label>
-        <input type="text" name="telefone" value="{{ old('telefone', $dado->telefone ?? '') }}">
-        @error('telefone')
-            <div class="text-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    </div>
-
+        {{-- Primeira linha com Nome, CPF e Telefone --}}
+        <div class="row mb-3">
             <div class="col">
-                <label for="">Categoria</label>
-                <select name="categoria_id">
-                    @foreach ($categorias as $item)
-                        <option value="{{ $item->id }}"
-                            {{ old('categoria_id', $dado->categoria_id ?? '') == $item->id ? 'selected' : '' }}>
-                            {{ $item->nome }}
-                        </option>
-                    @endforeach
-                </select>
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome', $dado->nome ?? '') }}">
+                @error('nome')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
-
-            @php
-                $nome_imagem = !empty($dado->imagem) ? $dado->imagem : 'sem_imagem.png';
-            @endphp
             <div class="col">
-                <label for="">Imagem</label>
-                <img src="/storage/{{ $nome_imagem }}" width="200px" height="200px" alt="img">
-                <input type="file" name="imagem" value="{{ old('imagem', $dado->imagem ?? '') }}">
+                <label for="cpf" class="form-label">CPF</label>
+                <input type="text" name="cpf" id="cpf" class="form-control" value="{{ old('cpf', $dado->cpf ?? '') }}">
+                @error('cpf')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="col">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="text" name="telefone" id="telefone" class="form-control" value="{{ old('telefone', $dado->telefone ?? '') }}">
+                @error('telefone')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
         </div>
+
+        <div class="row mb-3">
+            <div class="col-8">
+                <label for="imagem" class="form-label">Imagem</label>
+                @php
+                    $nome_imagem = !empty($dado->imagem) ? $dado->imagem : 'sem_imagem.png';
+                @endphp
+                <div class="input-group">
+                    <div class="input-group-text p-0" style="background-color: transparent; border: none;">
+                        <img src="/storage/{{ $nome_imagem }}" width="40px" height="40px" alt="img" class="rounded-circle me-2">
+                    </div>
+                    <input type="file" name="imagem" id="imagem" class="form-control">
+                </div>
+                @error('imagem')
+                    <div class="text-danger mt-1">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+
+        {{-- Linha para os botões Salvar e Voltar --}}
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn btn-success">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>
-                <a href="{{ url('cliente') }}" class="btn btn-primary">Voltar</a>
+                <button type="submit" class="btn text-white" style="background-color: #718c5e;">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>
+                <a href="{{ url('cliente') }}" class="btn text-white" style="background-color: #384236;">Voltar</a>
             </div>
         </div>
     </form>
