@@ -17,7 +17,6 @@ use App\Http\Controllers\ProdutoController;
 |
 */
 
-/*Route::resource('cliente', ClienteController::class 'clientes');*/
 
 Route::resource('cliente', ClienteController::class);
 Route::resource('clientes', ClienteController::class);
