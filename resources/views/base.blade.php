@@ -12,6 +12,7 @@
 <body>
     <nav class="navbar navbar-expand-lg" style="background-color: #384236;">
         <div class="container-fluid">
+            <!--<img src="c:\Users\aliss\Downloads\logo-LA.png" alt="Logo" style="width: 40px; height: 40px; object-fit: cover;">-->
             <a class="navbar-brand text-light" href="{{ url('/') }}">LA Artigos Religiosos</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -19,10 +20,10 @@
                         <a class="nav-link text-light" href="{{ route('clientes.index') }}">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ route('categoria.index') }}">Categorias</a>
+                        <a class="nav-link text-light" href="{{ route('categorias.index') }}">Categorias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ route('produto.index') }}">Produtos</a>
+                        <a class="nav-link text-light" href="{{ route('produtos.index') }}">Produtos</a>
                     </li>
                 </ul>
             </div>

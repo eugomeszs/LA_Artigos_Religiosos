@@ -52,7 +52,7 @@ class ProdutoController extends Controller
 
         Produto::create($dados);
 
-        return redirect()->route('produto.index')->with('success', 'Produto cadastrado!');
+        return redirect()->route('produtos.index')->with('success', 'Produto cadastrado!');
     }
 
     public function edit(Produto $produto)
@@ -83,7 +83,7 @@ class ProdutoController extends Controller
 
         $produto->update($dados);
 
-        return redirect()->route('produto.index')->with('success', 'Produto atualizado!');
+        return redirect()->route('produtos.index')->with('success', 'Produto atualizado!');
     }
 
     public function destroy(Produto $produto)
@@ -93,6 +93,6 @@ class ProdutoController extends Controller
         }
 
         $produto->delete();
-        return redirect()->route('produto.index')->with('success', 'Produto removido!');
+        return redirect()->route('produtos.index')->with('success', 'Produto removido!');
     }
 }

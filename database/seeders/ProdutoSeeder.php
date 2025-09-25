@@ -14,7 +14,6 @@ class ProdutoSeeder extends Seeder
      */
     public function run(): void
     {
-        // Certifique-se de que a tabela de categorias não está vazia
         $categoriaTerco = Categoria::where('nome', 'Terços')->first();
         $categoriaBiblia = Categoria::where('nome', 'Bíblias')->first();
         $categoriaImagens = Categoria::where('nome', 'Imagens de Santos')->first();
@@ -24,7 +23,7 @@ class ProdutoSeeder extends Seeder
                 [
                     'nome' => 'Terço de Madeira',
                     'descricao' => 'Terço artesanal feito de madeira com cordão reforçado.',
-                    'preco' => 25.50,
+                    'preco' => 25.00,
                     'categoria_id' => $categoriaTerco->id,
                 ],
                 [
@@ -36,7 +35,7 @@ class ProdutoSeeder extends Seeder
                 [
                     'nome' => 'Imagem de Nossa Senhora Aparecida',
                     'descricao' => 'Imagem de gesso pintada à mão, 20cm de altura.',
-                    'preco' => 85.90,
+                    'preco' => 85.00,
                     'categoria_id' => $categoriaImagens->id,
                 ],
                 [
@@ -45,14 +44,31 @@ class ProdutoSeeder extends Seeder
                     'preco' => 45.00,
                     'categoria_id' => $categoriaTerco->id,
                 ],
+                [
+                    'nome' => 'Livros Religiosos',
+                    'descricao' => 'Livros Religiosos diversos.',
+                    'preco' => 55.00,
+                    'categoria_id' => $categoriaTerco->id,
+                ],
+                [
+                    'nome' => 'Ícones Religiosos',
+                    'descricao' => 'Icones que não diversos, além dos católicos.',
+                    'preco' => 70.00,
+                    'categoria_id' => $categoriaTerco->id,
+                ],
+                [
+                    'nome' => 'Velas e Incensos',
+                    'descricao' => 'Velas e Incensos aromatizados ou simples.',
+                    'preco' => 5.00,
+                    'categoria_id' => $categoriaTerco->id,
+                ],
             ];
 
             foreach ($produtos as $produto) {
                 Produto::create($produto);
             }
         } else {
-            // Opcional: Adicionar uma mensagem de aviso caso as categorias não sejam encontradas.
-            echo "As categorias 'Terços', 'Bíblias' ou 'Imagens de Santos' não foram encontradas. Execute o CategoriaSeeder primeiro.\n";
+            echo "As categorias 'Terços', 'Bíblias', 'Imagens de Santos', 'Livros Religiosos', 'Ícones Religiosos' ou 'Velas e Incensos' não foram encontradas. Execute o CategoriaSeeder primeiro.\n";
         }
     }
 }

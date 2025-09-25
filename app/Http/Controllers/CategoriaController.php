@@ -7,7 +7,6 @@ use App\Models\Categoria;
 
 class CategoriaController extends Controller
 {
-
     public function index(Request $request)
     {
         $query = Categoria::query();
@@ -28,7 +27,6 @@ class CategoriaController extends Controller
         return view('categoria.categoriaCadastrar', compact('dado'));
     }
 
-
     public function store(Request $request)
     {
         $request->validate([
@@ -37,7 +35,7 @@ class CategoriaController extends Controller
 
         Categoria::create($request->all());
 
-        return redirect()->route('categoria.index')->with('success', 'Categoria cadastrada!');
+        return redirect()->route('categorias.index')->with('success', 'Categoria cadastrada!');
     }
 
     public function edit(Categoria $categoria)
@@ -54,12 +52,12 @@ class CategoriaController extends Controller
 
         $categoria->update($request->all());
 
-        return redirect()->route('categoria.index')->with('success', 'Categoria atualizada!');
+        return redirect()->route('categorias.index')->with('success', 'Categoria atualizada!');
     }
 
     public function destroy(Categoria $categoria)
     {
         $categoria->delete();
-        return redirect()->route('categoria.index')->with('success', 'Categoria removida!');
+        return redirect()->route('categorias.index')->with('success', 'Categoria removida!');
     }
 }

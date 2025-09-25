@@ -8,11 +8,11 @@
         </div>
     @endif
 
-    <a href="{{ route('categoria.create') }}" class="btn text-white mb-3" style="background-color: #718c5e;">
+    <a href="{{ route('categorias.create') }}" class="btn text-white mb-3" style="background-color: #718c5e;">
         Nova Categoria
     </a>
 
-    <form action="{{ route('categoria.index') }}" method="GET" class="mb-3">
+    <form action="{{ route('categorias.index') }}" method="GET" class="mb-3">
         <div class="input-group">
             <input type="text" name="busca" class="form-control" placeholder="Buscar categoria..." style="border-radius: 5px;">
             <button class="btn text-white" type="submit" style="background-color: #718c5e; border-radius: 5px;">Buscar</button>
@@ -24,6 +24,7 @@
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
+                <th>Religião</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -32,11 +33,12 @@
                 <tr>
                     <td>{{ $categoria->id }}</td>
                     <td>{{ $categoria->nome }}</td>
+                    <td>{{ $categoria->religiao }}</td>
                     <td>
-                        <a href="{{ route('categoria.edit', $categoria->id) }}" class="btn btn-sm text-white" style="background-color: #f7a627;">
+                        <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-sm text-white" style="background-color: #f7a627;">
                             Editar
                         </a>
-                        <form action="{{ route('categoria.destroy', $categoria->id) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm text-white" style="background-color: #dc3545;"

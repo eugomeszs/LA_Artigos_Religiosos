@@ -14,7 +14,6 @@ class ClienteSeeder extends Seeder
      */
     public function run(): void
     {
-        // Assumindo que você tem uma categoria para associar aos clientes, se não tiver pode deixar o categoria_id como null
         $categoriaCliente = Categoria::first();
 
         $clientes = [

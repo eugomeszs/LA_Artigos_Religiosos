@@ -4,9 +4,9 @@
 
     @php
         if (!empty($dado->id)) {
-            $action = route('cliente.update', $dado->id);
+            $action = route('clientes.update', $dado->id);
         } else {
-            $action = route('cliente.store');
+            $action = route('clientes.store');
         }
     @endphp
 
@@ -19,7 +19,6 @@
 
         <input type="hidden" name="id" value="{{ old('id', $dado->id ?? '') }}">
 
-        {{-- Primeira linha com Nome, CPF e Telefone --}}
         <div class="row mb-3">
             <div class="col">
                 <label for="nome" class="form-label">Nome</label>
@@ -62,11 +61,10 @@
             </div>
         </div>
 
-        {{-- Linha para os botões Salvar e Voltar --}}
         <div class="row">
             <div class="col">
                 <button type="submit" class="btn text-white" style="background-color: #718c5e;">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>
-                <a href="{{ url('cliente') }}" class="btn text-white" style="background-color: #384236;">Voltar</a>
+                <a href="{{ url('clientes') }}" class="btn text-white" style="background-color: #384236;">Voltar</a>
             </div>
         </div>
     </form>

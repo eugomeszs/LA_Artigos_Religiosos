@@ -4,9 +4,9 @@
 
     @php
         if (!empty($dado->id)) {
-            $action = route('categoria.update', $dado->id);
+            $action = route('categorias.update', $dado->id);
         } else {
-            $action = route('categoria.store');
+            $action = route('categorias.store');
         }
     @endphp
 
@@ -25,11 +25,18 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
+            <div class="col">
+                <label for="religiao" class="form-label">Religião</label>
+                <input type="text" name="religiao" id="religiao" class="form-control" value="{{ old('religiao', $dado->religiao ?? '') }}">
+                @error('religiao')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
         <div class="row mt-3">
             <div class="col">
                 <button type="submit" class="btn text-white" style="background-color: #718c5e;">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>
-                <a href="{{ url('categoria') }}" class="btn text-white" style="background-color: #384236;">Voltar</a>
+                <a href="{{ url('categorias') }}" class="btn text-white" style="background-color: #384236;">Voltar</a>
             </div>
         </div>
     </form>

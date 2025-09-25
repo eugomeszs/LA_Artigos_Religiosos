@@ -8,11 +8,11 @@
         </div>
     @endif
 
-    <a href="{{ route('produto.create') }}" class="btn text-white mb-3" style="background-color: #718c5e;">
+    <a href="{{ route('produtos.create') }}" class="btn text-white mb-3" style="background-color: #718c5e;">
         Novo Produto
     </a>
 
-    <form action="{{ route('produto.index') }}" method="GET" class="mb-3">
+    <form action="{{ route('produtos.index') }}" method="GET" class="mb-3">
         <div class="input-group">
             <input type="text" name="busca" class="form-control" placeholder="Buscar produto..." style="border-radius: 5px;">
             <button class="btn text-white" type="submit" style="background-color: #718c5e; border-radius: 5px;">Buscar</button>
@@ -43,10 +43,10 @@
                     <td>R$ {{ number_format($produto->preco, 2, ',', '.') }}</td>
                     <td>{{ $produto->categoria->nome }}</td>
                     <td>
-                        <a href="{{ route('produto.edit', $produto->id) }}" class="btn btn-sm text-white" style="background-color: #f7a627;">
+                        <a href="{{ route('produtos.edit', $produto->id) }}" class="btn btn-sm text-white" style="background-color: #f7a627;">
                             Editar
                         </a>
-                        <form action="{{ route('produto.destroy', $produto->id) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('produtos.destroy', $produto->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm text-white" style="background-color: #dc3545;" onclick="return confirm('Tem certeza que deseja deletar?')">

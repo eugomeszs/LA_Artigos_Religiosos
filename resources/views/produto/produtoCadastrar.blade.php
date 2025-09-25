@@ -4,9 +4,9 @@
 
     @php
         if (!empty($dado->id)) {
-            $action = route('produto.update', $dado->id);
+            $action = route('produtos.update', $dado->id);
         } else {
-            $action = route('produto.store');
+            $action = route('produtos.store');
         }
     @endphp
 
@@ -17,7 +17,6 @@
             @method('put')
         @endif
 
-        {{-- Campos Nome e Preço --}}
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="nome" class="form-label">Nome</label>
@@ -36,7 +35,6 @@
             </div>
         </div>
 
-        {{-- Campos Categoria e Imagem --}}
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="categoria_id" class="form-label">Categoria</label>
@@ -74,7 +72,7 @@
         <div class="row mt-3">
             <div class="col">
                 <button type="submit" class="btn text-white" style="background-color: #718c5e;">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>
-                <a href="{{ url('produto') }}" class="btn text-white" style="background-color: #384236;">Voltar</a>
+                <a href="{{ url('produtos') }}" class="btn text-white" style="background-color: #384236;">Voltar</a>
             </div>
         </div>
     </form>

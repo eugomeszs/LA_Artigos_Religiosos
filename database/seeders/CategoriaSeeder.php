@@ -17,7 +17,7 @@ class CategoriaSeeder extends Seeder
             ['nome' => 'Bíblias'],
             ['nome' => 'Imagens de Santos'],
             ['nome' => 'Livros Religiosos'],
-            ['nome' => 'Ícones'],
+            ['nome' => 'Ícones Religiosos'],
             ['nome' => 'Velas e Incensos'],
         ];
 
