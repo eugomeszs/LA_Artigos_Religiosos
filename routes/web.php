@@ -16,7 +16,9 @@ use App\Http\Controllers\ProdutoController;
 |
 */
 
-// Use apenas um nome de recurso, no plural, para cada controller.
+/*Route::resource('cliente', ClienteController::class 'clientes');*/
+
+Route::resource('cliente', ClienteController::class);
 Route::resource('clientes', ClienteController::class);
 Route::resource('categorias', CategoriaController::class);
 Route::resource('produtos', ProdutoController::class);
