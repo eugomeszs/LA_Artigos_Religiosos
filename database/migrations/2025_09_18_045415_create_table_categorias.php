@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('religiao');
+            $table->string('material');
             $table->timestamps();
         });
     }

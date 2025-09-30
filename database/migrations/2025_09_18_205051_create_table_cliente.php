@@ -13,7 +13,7 @@ public function up(): void
     Schema::create('clientes', function (Blueprint $table) {
         $table->id('id');
         $table->string('nome');
-        $table->string('telefone')->nullable();
+        $table->string('email')->nullable();
         $table->string('cpf')->unique();
         
         $table->foreignId('categoria_id')

@@ -16,7 +16,8 @@ class ClienteController extends Controller
         if ($request->has('busca')) {
             $busca = $request->input('busca');
             $query->where('nome', 'like', "%{$busca}%")
-                  ->orWhere('cpf', 'like', "%{$busca}%");
+                  ->orWhere('cpf', 'like', "%{$busca}%")
+                  ->orWhere('email', 'like', "%{$busca}%");
         }
 
         $clientes = $query->get();
@@ -57,7 +58,7 @@ class ClienteController extends Controller
         $request->validate([
             'nome' => 'required|string|max:255',
             'cpf' => 'required|string|max:14|unique:clientes,cpf,' . $cliente->id,
-            'telefone' => 'nullable|string|max:20',
+            'email' => 'nullable|string|max:20',
         ]);
 
         $cliente->update($request->all());

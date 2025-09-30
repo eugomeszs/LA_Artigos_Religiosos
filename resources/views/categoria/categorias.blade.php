@@ -25,6 +25,7 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Religião</th>
+                <th>Material do Produto</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -34,6 +35,7 @@
                     <td>{{ $categoria->id }}</td>
                     <td>{{ $categoria->nome }}</td>
                     <td>{{ $categoria->religiao }}</td>
+                    <td>{{ $categoria->material }}</td>
                     <td>
                         <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-sm text-white" style="background-color: #f7a627;">
                             Editar

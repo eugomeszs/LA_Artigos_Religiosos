@@ -25,7 +25,8 @@
             <th scope="col"></th>
             <th scope="col">Nome</th>
             <th scope="col">CPF</th>
-            <th scope="col">Telefone</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Categoria</th>
             <th scope="col">Ações</th>
         </tr>
     </thead>
@@ -41,7 +42,8 @@
                 </td>
                 <td>{{ $cliente->nome }}</td>
                 <td>{{ $cliente->cpf }}</td>
-                <td>{{ $cliente->telefone }}</td>
+                <td>{{ $cliente->email }}</td>
+                <td>{{ $cliente->categoria_id }}</td>
                 <td>
                     <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning btn-sm">Editar</a>
                     <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" class="d-inline">

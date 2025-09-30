@@ -20,31 +20,25 @@ class ClienteSeeder extends Seeder
             [
                 'nome' => 'Larissa Burin Dalla Riva',
                 'cpf' => '123.456.186-01',
-                'telefone' => '49995895968',
+                'email' => 'larissa@gmail.com',
                 'categoria_id' => $categoriaCliente ? $categoriaCliente->id : null,
             ],
             [
                 'nome' => 'Keyrisson Sirino Gomes Gonçalves',
                 'cpf' => '987.654.321-02',
-                'telefone' => '47988887777',
+                'email' => 'keyrisson@gmail.com',
                 'categoria_id' => $categoriaCliente ? $categoriaCliente->id : null,
             ],
             [
                 'nome' => 'Adilson Gonçalves',
                 'cpf' => '066.186.599-59',
-                'telefone' => '49999483324',
+                'email' => 'adilson@gmail.com',
                 'categoria_id' => $categoriaCliente ? $categoriaCliente->id : null,
             ],
             [
                 'nome' => 'Alvaro Forceline Guaragni',
                 'cpf' => '066.186.589-59',
-                'telefone' => '49999486723',
-                'categoria_id' => $categoriaCliente ? $categoriaCliente->id : null,
-            ],
-            [
-                'nome' => 'Adilson Gonçalves',
-                'cpf' => '038.159.587-31',
-                'telefone' => '49998180872',
+                'email' => 'alvaro@gmail.com',
                 'categoria_id' => $categoriaCliente ? $categoriaCliente->id : null,
             ],
         ];

@@ -35,10 +35,27 @@
                 @enderror
             </div>
             <div class="col">
-                <label for="telefone" class="form-label">Telefone</label>
-                <input type="text" name="telefone" id="telefone" class="form-control" value="{{ old('telefone', $dado->telefone ?? '') }}">
-                @error('telefone')
+                <label for="email" class="form-label">E-mail</label>
+                <input type="text" name="email" id="email" class="form-control" value="{{ old('email', $dado->email ?? '') }}">
+                @error('email')
                     <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label for="categoria_id" class="form-label">Categoria</label>
+                <select name="categoria_id" id="categoria_id" class="form-select">
+                    @foreach ($categorias as $item)
+                        <option value="{{ $item->id }}"
+                            {{ old('categoria_id', $dado->categoria_id ?? '') == $item->id ? 'selected' : '' }}>
+                            {{ $item->nome }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('categoria_id')
+                    <div class="text-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
         </div>

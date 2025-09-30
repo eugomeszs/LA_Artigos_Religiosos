@@ -24,7 +24,7 @@ class StoreClienteRequest extends FormRequest
     return [
         'nome' => 'required|string|max:255',
         'cpf' => 'required|string|max:14|unique:clientes',
-        'telefone' => 'nullable|string|max:20',
+        'email' => 'nullable|string|max:200',
         'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ];
 }

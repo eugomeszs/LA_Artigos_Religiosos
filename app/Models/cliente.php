@@ -12,7 +12,7 @@ class Cliente extends Model
     protected $fillable = [
         'nome',
         'cpf',
-        'e-mail',
+        'email',
         'categoria_id',
         'imagem',
     ];

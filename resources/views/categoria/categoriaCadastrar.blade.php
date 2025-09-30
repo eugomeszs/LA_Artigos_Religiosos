@@ -32,6 +32,13 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
+            <div class="col">
+                <label for="material" class="form-label">Material</label>
+                <input type="text" name="material" id="material" class="form-control" value="{{ old('material', $dado->material ?? '') }}">
+                @error('material')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
         <div class="row mt-3">
             <div class="col">
