@@ -129,7 +129,7 @@
             {{ $dado->id ? 'Atualizar Pedido' : 'Finalizar Pedido' }}
         </button>
 
-        <a href="{{ route('pedidos.index') }}" class="btn btn-secondary">Cancelar</a>
+        <a href="{{ route('pedidos.index') }}" class="btn text-white" style="background-color: #384236;">Voltar</a>
     </div>
 
 </form>

@@ -60,4 +60,15 @@ class CategoriaController extends Controller
         $categoria->delete();
         return redirect()->route('categorias.index')->with('success', 'Categoria removida!');
     }
+
+    public function produtos()
+    {
+        return $this->hasMany(Produto::class);
+    }
+
+    public function chart(ProdutoQtdCategoria $chart){
+
+        return view('categoria.chart', ['chart' => $chart->build()]);
+    }
+
 }

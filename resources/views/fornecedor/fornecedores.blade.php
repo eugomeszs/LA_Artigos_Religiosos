@@ -16,7 +16,7 @@
 
 <form action="{{ route('fornecedores.index') }}" method="GET" class="mb-3">
     <div class="input-group">
-        <input type="text" name="busca" class="form-control" placeholder="Buscar por nome fantasia, CNPJ ou Razão Social..." value="{{ request('busca') }}" style="border-radius: 5px;">
+        <input type="text" name="busca" class="form-control" placeholder="Buscar por nome ou CNPJ..." value="{{ request('busca') }}" style="border-radius: 5px;">
         <button class="btn text-white" type="submit" style="background-color: #718c5e; border-radius: 5px;">Buscar</button>
     </div>
 </form>
@@ -24,9 +24,9 @@
 <table class="table table-hover table-bordered">
     <thead>
         <tr>
-            <th scope="col">Nome Fantasia</th>
+            <th scope="col">Nome</th>
             <th scope="col">CNPJ</th>
-            <th scope="col">E-mail de Contato</th>
+            <th scope="col">E-mail</th>
             <th scope="col">Telefone</th>
             <th scope="col">Ações</th>
         </tr>
@@ -34,9 +34,9 @@
     <tbody>
         @forelse($fornecedores as $fornecedor)
             <tr>
-                <td>{{ $fornecedor->nome_fantasia }}</td>
+                <td>{{ $fornecedor->nome }}</td>
                 <td>{{ $fornecedor->cnpj ?? 'N/A' }}</td>
-                <td>{{ $fornecedor->email_contato }}</td>
+                <td>{{ $fornecedor->email }}</td>
                 <td>{{ $fornecedor->telefone }}</td>
                 <td>
                     <a href="{{ route('fornecedores.edit', $fornecedor->id) }}" class="btn btn-warning btn-sm">Editar</a>

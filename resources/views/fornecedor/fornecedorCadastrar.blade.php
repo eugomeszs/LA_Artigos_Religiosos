@@ -22,15 +22,15 @@
     @endif
 
     <div class="mb-3">
-        <label for="nome_fantasia" class="form-label">Nome Fantasia <span class="text-danger">*</span></label>
-        <input type="text" class="form-control" id="nome_fantasia" name="nome_fantasia"
-            value="{{ old('nome_fantasia', $dado->nome_fantasia) }}" required>
+        <label for="nome" class="form-label">Nome Fantasia <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="nome" name="nome"
+            value="{{ old('nome_fantasia', $dado->nome) }}" required>
     </div>
 
     <div class="mb-3">
-        <label for="razao_social" class="form-label">Razão Social</label>
-        <input type="text" class="form-control" id="razao_social" name="razao_social"
-            value="{{ old('razao_social', $dado->razao_social) }}">
+        <label for="motivo" class="form-label">Motivo</label>
+        <input type="text" class="form-control" id="motivo" name="motivo"
+            value="{{ old('motivo', $dado->motivo) }}">
     </div>
 
     <div class="mb-3">
@@ -40,9 +40,9 @@
     </div>
 
     <div class="mb-3">
-        <label for="email_contato" class="form-label">E-mail de Contato</label>
-        <input type="email" class="form-control" id="email_contato" name="email_contato"
-            value="{{ old('email_contato', $dado->email_contato) }}">
+        <label for="email" class="form-label">E-mail de Contato</label>
+        <input type="email" class="form-control" id="email" name="email"
+            value="{{ old('email', $dado->email) }}">
     </div>
 
     <div class="mb-3">
@@ -55,7 +55,7 @@
         {{ $dado->id ? 'Atualizar Fornecedor' : 'Cadastrar Fornecedor' }}
     </button>
 
-    <a href="{{ route('fornecedores.index') }}" class="btn btn-secondary">Cancelar</a>
+    <a href="{{ route('fornecedores.index') }}" class="btn text-white" style="background-color: #384236;">Voltar</a>
 
 </form>
 
