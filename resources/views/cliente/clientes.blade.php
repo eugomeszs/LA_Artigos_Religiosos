@@ -8,6 +8,8 @@
     </div>
 @endif
 
+<h2 class="mb-4">Lista de Clientes</h2>
+
 <a href="{{ route('clientes.create') }}" class="btn text-white mb-3" style="background-color: #718c5e;">
     Novo Cliente
 </a>
@@ -45,11 +47,16 @@
                 <td>{{ $cliente->email }}</td>
                 <td>{{ $cliente->categoria_id }}</td>
                 <td>
-                    <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a>
                     <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">Deletar</button>
+                        <button type="submit" class="btn btn-sm text-black" style="background-color: #ff0019ff;"
+                            onclick="return confirm('Tem certeza que deseja deletar?')">
+                            <i class="bi bi-trash"></i> Deletar
+                        </button>
                     </form>
                 </td>
             </tr>

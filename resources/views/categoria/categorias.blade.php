@@ -2,11 +2,18 @@
 @section('titulo', 'Categorias')
 @section('conteudo')
 
+    {{-- Adicionando Bootstrap CSS e Icons para garantir o estilo, já que o código usa classes Bootstrap --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
+
+    <h2 class="mb-4">Listagem das Categorias</h2>
 
     <a href="{{ route('categorias.create') }}" class="btn text-white mb-3" style="background-color: #718c5e;">
         Nova Categoria
@@ -37,15 +44,15 @@
                     <td>{{ $categoria->religiao }}</td>
                     <td>{{ $categoria->material }}</td>
                     <td>
-                        <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-sm text-white" style="background-color: #f7a627;">
-                            Editar
+                        <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-square"></i> Editar
                         </a>
                         <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm text-white" style="background-color: #dc3545;"
+                            <button type="submit" class="btn btn-sm text-black" style="background-color: #ff0019ff;"
                                 onclick="return confirm('Tem certeza que deseja deletar?')">
-                                Deletar
+                                <i class="bi bi-trash"></i> Deletar
                             </button>
                         </form>
                     </td>

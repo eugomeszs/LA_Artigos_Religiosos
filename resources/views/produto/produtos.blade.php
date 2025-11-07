@@ -8,6 +8,8 @@
         </div>
     @endif
 
+    <h2 class="mb-4">Listagem de Produtoss</h2>
+
     <a href="{{ route('produtos.create') }}" class="btn text-white mb-3" style="background-color: #718c5e;">
         Novo Produto
     </a>
@@ -43,14 +45,15 @@
                     <td>R$ {{ number_format($produto->preco, 2, ',', '.') }}</td>
                     <td>{{ $produto->categoria->nome }}</td>
                     <td>
-                        <a href="{{ route('produtos.edit', $produto->id) }}" class="btn btn-sm text-white" style="background-color: #f7a627;">
-                            Editar
+                        <a href="{{ route('produtos.edit', $produto->id) }}" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-square"></i> Editar
                         </a>
                         <form action="{{ route('produtos.destroy', $produto->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm text-white" style="background-color: #dc3545;" onclick="return confirm('Tem certeza que deseja deletar?')">
-                                Deletar
+                            <button type="submit" class="btn btn-sm text-black" style="background-color: #ff0019ff;"
+                                onclick="return confirm('Tem certeza que deseja deletar?')">
+                                <i class="bi bi-trash"></i> Deletar
                             </button>
                         </form>
                     </td>

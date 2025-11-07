@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\FornecedorController;
+use App\Http\Controllers\PedidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,6 @@ Route::resource('cliente', ClienteController::class);
 Route::resource('clientes', ClienteController::class);
 Route::resource('categorias', CategoriaController::class);
 Route::resource('produtos', ProdutoController::class);
+Route::resource('fornecedores', FornecedorController::class);
+Route::resource('pedidos', PedidoController::class);
+
