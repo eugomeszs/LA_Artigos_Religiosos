@@ -49,8 +49,6 @@
         @endif
     </div>
 
-    {{-- Bloco de Status removido daqui --}}
-
     <div class="mb-3">
         <label for="endereco_entrega" class="form-label">Endereço de Entrega <span class="text-danger"></span></label>
         <textarea class="form-control" id="endereco_entrega" name="endereco_entrega" rows="3" required>{{ old('endereco_entrega', $dado->endereco_entrega) }}</textarea>

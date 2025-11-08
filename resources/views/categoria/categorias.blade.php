@@ -65,6 +65,9 @@
         <a class="btn btn-warning" href="{{ route('categorias.chart') }}"> 
             <i class="fa-solid fa-chart-line"></i> Gerar Gráfico
         </a>
+        <a href="{{ route('categorias.report') }}" class="btn btn-danger" target="_blank">
+            <i class="fa-solid fa-file-pdf"></i> Gerar Relatório (PDF)
+        </a>
     </div>
 
 @endsection

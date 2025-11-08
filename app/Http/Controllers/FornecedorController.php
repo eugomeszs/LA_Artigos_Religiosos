@@ -44,12 +44,12 @@ class FornecedorController extends Controller
         $request->validate([
             'nome' => 'required|string',
             'cnpj' => 'nullable|string|max:18|unique:fornecedores,cnpj',
-            'motivo' => 'nullable|string|max:150', // Corrigido de 'motivo'
+            'motivo' => 'nullable|string|max:150', 
             'email' => 'nullable|email|max:100',
             'telefone' => 'nullable|string|max:20',
         ]);
 
-        Fornecedor::create($request->all()); // Corrigido de Fornecedores
+        Fornecedor::create($request->all()); 
 
         return redirect()->route('fornecedores.index')->with('success', 'Fornecedor cadastrado com sucesso!');
     }
@@ -80,7 +80,7 @@ class FornecedorController extends Controller
         $request->validate([
             'nome' => 'required|string',
             'cnpj' => 'nullable|string|max:18|unique:fornecedores,cnpj,' . $fornecedor->id,
-            'motivo' => 'nullable|string|max:150', // Corrigido de 'motivo'
+            'motivo' => 'nullable|string|max:150', 
             'email' => 'nullable|email|max:100',
             'telefone' => 'nullable|string|max:20',
         ]);

@@ -53,7 +53,6 @@
                 <th scope="col">Cliente</th>
                 <th scope="col">Data</th>
                 <th scope="col">Valor Total</th>
-                {{-- <th scope="col">Status</th> --}} {{-- Removido --}}
                 <th scope="col">Ações</th>
             </tr>
         </thead>
@@ -65,8 +64,7 @@
                     <td>{{ \Carbon\Carbon::parse($pedido->data_pedido)->format('d/m/Y H:i') }}</td>
                     <td>R$ {{ number_format($pedido->valor_total, 2, ',', '.') }}</td>
                     
-                    {{-- Bloco <td> de status removido --}}
-                    
+
                     <td>
                         <a href="{{ route('pedidos.show', $pedido->id) }}" class="btn btn-info btn-sm text-white">Ver</a>
                         <a href="{{ route('pedidos.edit', $pedido->id) }}" class="btn btn-warning btn-sm">
@@ -84,7 +82,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="5" class="text-center">Nenhum pedido encontrado!</td> {{-- Colspan atualizado para 5 --}}
+                    <td colspan="5" class="text-center">Nenhum pedido encontrado!</td> 
                 </tr>
             @endforelse
         </tbody>

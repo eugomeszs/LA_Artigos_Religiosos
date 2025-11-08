@@ -40,7 +40,6 @@
                 <th>Cliente</th>
                 <th>Data</th>
                 <th>Valor Total</th>
-                {{-- <th>Status</th> --}} {{-- Removido --}}
             </tr>
         </thead>
         <tbody>
@@ -50,11 +49,10 @@
                     <td>{{ $pedido->cliente->nome ?? 'N/A' }}</td>
                     <td>{{ \Carbon\Carbon::parse($pedido->data_pedido)->format('d/m/Y H:i') }}</td>
                     <td>R$ {{ number_format($pedido->valor_total, 2, ',', '.') }}</td>
-                    {{-- <td>{{ $pedido->status }}</td> --}} {{-- Removido --}}
                 </tr>
             @empty
                 <tr>
-                    <td colspan="4" style="text-align: center;">Nenhum pedido encontrado.</td> {{-- Colspan atualizado para 4 --}}
+                    <td colspan="4" style="text-align: center;">Nenhum pedido encontrado.</td>
                 </tr>
             @endforelse
         </tbody>
