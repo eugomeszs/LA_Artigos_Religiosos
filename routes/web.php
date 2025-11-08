@@ -12,9 +12,9 @@ use App\Http\Controllers\PedidoController;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| Aqui é onde você pode registrar as rotas web para sua aplicação. Estas
+| rotas são carregadas pelo RouteServiceProvider e todas elas serão
+| atribuídas ao grupo de middleware "web". Faça algo ótimo!
 |
 */
 
@@ -22,8 +22,10 @@ use App\Http\Controllers\PedidoController;
 
 Route::resource('cliente', ClienteController::class);
 Route::resource('clientes', ClienteController::class);
-Route::resource('categorias', CategoriaController::class);
+Route::resource('categorias', CategoriaController::class)->except(['show']);
+Route::get('/categorias/chart', [CategoriaController::class, 'chart'])->name('categorias.chart');
 Route::resource('produtos', ProdutoController::class);
 Route::resource('fornecedores', FornecedorController::class);
-Route::resource('pedidos', PedidoController::class);
-
+Route::resource('pedidos', PedidoController::class); 
+Route::get('/pedidos/chart', [PedidoController::class, 'chartValor'])->name('pedidos.chartValor');
+Route::get('/pedidos/report', [PedidoController::class, 'gerarReport'])->name('pedidos.report');

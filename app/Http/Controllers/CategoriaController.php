@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use App\Charts\ProdutoQtdCategoria; // Importe a classe do seu gráfico
 
 class CategoriaController extends Controller
 {
@@ -63,12 +64,12 @@ class CategoriaController extends Controller
 
     public function produtos()
     {
-        return $this->hasMany(Produto::class);
+        
     }
 
     public function chart(ProdutoQtdCategoria $chart){
 
-        return view('categoria.chart', ['chart' => $chart->build()]);
+        return view('categoria.chartProdutoQtdCategoria', ['chart' => $chart->build()]);
     }
 
 }

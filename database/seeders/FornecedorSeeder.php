@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Fornecedor;
+use Illuminate\Support\Facades\DB;
 
 class FornecedorSeeder extends Seeder
 {
@@ -36,6 +37,6 @@ class FornecedorSeeder extends Seeder
             ],
         ];
 
-        Fornecedor::upsert($fornecedores, ['cnpj'], ['nome', 'email', 'telefone']);
+        Fornecedor::upsert($fornecedores, ['cnpj'], ['nome', 'motivo', 'email', 'telefone']);
     }
 }

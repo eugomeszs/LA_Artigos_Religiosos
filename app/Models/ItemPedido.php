@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class ItemPedido extends Model
 {
     use HasFactory;
+    protected $table = 'item_pedidos';
 
     protected $fillable = [
         'pedido_id',
@@ -16,9 +17,6 @@ class ItemPedido extends Model
         'quantidade',
         'preco_unitario',
     ];
-
-    // converte o nome do Laravel para tabela pivot,
-    protected $table = 'item_pedidos';
 
     public function pedido(): BelongsTo
     {

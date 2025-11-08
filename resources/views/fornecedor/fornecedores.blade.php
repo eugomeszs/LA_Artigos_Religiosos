@@ -11,7 +11,7 @@
 <h2 class="mb-4">Lista de Fornecedores</h2>
 
 <a href="{{ route('fornecedores.create') }}" class="btn text-white mb-3" style="background-color: #718c5e;">
-    Novo Fornecedor
+    <i class="bi bi-plus-lg"></i> Novo Fornecedor
 </a>
 
 <form action="{{ route('fornecedores.index') }}" method="GET" class="mb-3">
@@ -39,12 +39,14 @@
                 <td>{{ $fornecedor->email }}</td>
                 <td>{{ $fornecedor->telefone }}</td>
                 <td>
-                    <a href="{{ route('fornecedores.edit', $fornecedor->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{{ route('fornecedores.edit', $fornecedor->id) }}" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a>
 
                     <form action="{{ route('fornecedores.destroy', $fornecedor->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm"
+                        <button type="submit" class="btn btn-sm text-black" style="background-color: #ff0019ff;"
                             onclick="return confirm('Tem certeza que deseja deletar o fornecedor {{ $fornecedor->nome_fantasia }}?')">
                             <i class="bi bi-trash-fill"></i> Deletar
                         </button>

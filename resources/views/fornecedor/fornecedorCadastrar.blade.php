@@ -22,9 +22,9 @@
     @endif
 
     <div class="mb-3">
-        <label for="nome" class="form-label">Nome Fantasia <span class="text-danger">*</span></label>
+        <label for="nome" class="form-label">Nome<span class="text-danger"></span></label>
         <input type="text" class="form-control" id="nome" name="nome"
-            value="{{ old('nome_fantasia', $dado->nome) }}" required>
+            value="{{ old('nome', $dado->nome) }}" required>
     </div>
 
     <div class="mb-3">

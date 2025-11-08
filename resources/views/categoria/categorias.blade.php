@@ -2,9 +2,9 @@
 @section('titulo', 'Categorias')
 @section('conteudo')
 
-    {{-- Adicionando Bootstrap CSS e Icons para garantir o estilo, já que o código usa classes Bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     @if(session('success'))
@@ -16,7 +16,7 @@
     <h2 class="mb-4">Listagem das Categorias</h2>
 
     <a href="{{ route('categorias.create') }}" class="btn text-white mb-3" style="background-color: #718c5e;">
-        Nova Categoria
+        <i class="bi bi-plus-lg"></i> Nova Categoria
     </a>
 
     <form action="{{ route('categorias.index') }}" method="GET" class="mb-3">
@@ -60,4 +60,11 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="mt-3">
+        <a class="btn btn-warning" href="{{ route('categorias.chart') }}"> 
+            <i class="fa-solid fa-chart-line"></i> Gerar Gráfico
+        </a>
+    </div>
+
 @endsection

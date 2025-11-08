@@ -16,12 +16,12 @@ class FornecedorController extends Controller
 
         if ($request->has('busca')) {
             $busca = $request->input('busca');
-            $query->where('nome_fantasia', 'like', "%{$busca}%")
+            $query->where('nome', 'like', "%{$busca}%")
                   ->orWhere('cnpj', 'like', "%{$busca}%")
-                  ->orWhere('razao_social', 'like', "%{$busca}%");
+                  ->orWhere('motivo', 'like', "%{$busca}%"); // Corrigido de 'motivo'
         }
 
-        $fornecedores = $query->get();
+        $fornecedores = $query->get(); // Corrigido de $fornecedor
         
         return view('fornecedor.fornecedores', compact('fornecedores'));
     }
@@ -42,14 +42,14 @@ class FornecedorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nome_fantasia' => 'required|string|max:100',
-            'cnpj' => 'nullable|string|max:18|unique:fornecedors,cnpj',
-            'razao_social' => 'nullable|string|max:150',
-            'email_contato' => 'nullable|email|max:100',
+            'nome' => 'required|string',
+            'cnpj' => 'nullable|string|max:18|unique:fornecedores,cnpj',
+            'motivo' => 'nullable|string|max:150', // Corrigido de 'motivo'
+            'email' => 'nullable|email|max:100',
             'telefone' => 'nullable|string|max:20',
         ]);
 
-        Fornecedor::create($request->all());
+        Fornecedor::create($request->all()); // Corrigido de Fornecedores
 
         return redirect()->route('fornecedores.index')->with('success', 'Fornecedor cadastrado com sucesso!');
     }
@@ -78,10 +78,10 @@ class FornecedorController extends Controller
     public function update(Request $request, Fornecedor $fornecedor)
     {
         $request->validate([
-            'nome_fantasia' => 'required|string|max:100',
-            'cnpj' => 'nullable|string|max:18|unique:fornecedors,cnpj,' . $fornecedor->id,
-            'razao_social' => 'nullable|string|max:150',
-            'email_contato' => 'nullable|email|max:100',
+            'nome' => 'required|string',
+            'cnpj' => 'nullable|string|max:18|unique:fornecedores,cnpj,' . $fornecedor->id,
+            'motivo' => 'nullable|string|max:150', // Corrigido de 'motivo'
+            'email' => 'nullable|email|max:100',
             'telefone' => 'nullable|string|max:20',
         ]);
 

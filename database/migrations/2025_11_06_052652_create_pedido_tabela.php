@@ -14,10 +14,8 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cliente_id')->constrained('clientes')->onDelete('cascade');
-            
             $table->dateTime('data_pedido')->useCurrent();
             $table->decimal('valor_total', 10, 2);
-            $table->string('status', 50)->default('Pendente'); 
             $table->text('endereco_de_entrega');
             $table->timestamps();
         });

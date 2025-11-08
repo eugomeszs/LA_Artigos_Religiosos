@@ -15,8 +15,15 @@ class Pedido extends Model
         'cliente_id',
         'data_pedido',
         'valor_total',
-        'status',
         'endereco_de_entrega',
+    ];
+
+    /**
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'data_pedido' => 'datetime',
     ];
 
     public function cliente(): BelongsTo
@@ -26,9 +33,8 @@ class Pedido extends Model
 
     public function produtos(): BelongsToMany
     {
-        // Define a tabela pivot e as colunas adicionais
         return $this->belongsToMany(Produto::class, 'item_pedidos', 'pedido_id', 'produto_id')
-                    ->withPivot('quantidade', 'preco_unitario')
-                    ->withTimestamps();
+            ->withPivot('quantidade', 'preco_unitario')
+            ->withTimestamps();
     }
 }

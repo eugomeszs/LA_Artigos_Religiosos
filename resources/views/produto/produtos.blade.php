@@ -11,7 +11,7 @@
     <h2 class="mb-4">Listagem de Produtoss</h2>
 
     <a href="{{ route('produtos.create') }}" class="btn text-white mb-3" style="background-color: #718c5e;">
-        Novo Produto
+        <i class="bi bi-plus-lg"></i> Novo Produto
     </a>
 
     <form action="{{ route('produtos.index') }}" method="GET" class="mb-3">

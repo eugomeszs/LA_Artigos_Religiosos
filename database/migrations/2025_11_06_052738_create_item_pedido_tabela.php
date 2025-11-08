@@ -11,7 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Tabela Pivot para relacionar Pedidos com Produtos (Muitos para Muitos)
         Schema::create('item_pedidos', function (Blueprint $table) {
             $table->id();
             

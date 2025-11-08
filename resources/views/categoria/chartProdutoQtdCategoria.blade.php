@@ -11,6 +11,9 @@
         <div class="card p-4 shadow-sm">
             {!! $chart->container() !!} 
         </div>
+        <div>    
+            <a href="{{ url('categorias') }}" class="btn text-white" style="background-color: #384236;">Voltar</a>
+        </div>
 
     </div>
 

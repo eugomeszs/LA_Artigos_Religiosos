@@ -14,4 +14,9 @@ class Categoria extends Model
         'religiao',
         'material',
     ];
+
+    public function produtos()
+    {
+        return $this->hasMany(Produto::class);
+    }
 }

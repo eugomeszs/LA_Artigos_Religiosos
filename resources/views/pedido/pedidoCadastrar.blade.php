@@ -19,7 +19,6 @@
     </div>
 @endif
 
-
 <form method="POST"
       action="{{ $dado->id ? route('pedidos.update', $dado->id) : route('pedidos.store') }}">
     @csrf
@@ -50,24 +49,10 @@
         @endif
     </div>
 
-    @if($dado->id)
-        <div class="mb-3">
-            <label for="status" class="form-label">Status do Pedido <span class="text-danger">*</span></label>
-            <select class="form-select" id="status" name="status" required>
-                @php
-                    $statuses = ['Pendente', 'Em Separação', 'Enviado', 'Concluído', 'Cancelado'];
-                @endphp
-                @foreach($statuses as $status)
-                    <option value="{{ $status }}" {{ old('status', $dado->status) == $status ? 'selected' : '' }}>
-                        {{ $status }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-    @endif
+    {{-- Bloco de Status removido daqui --}}
 
     <div class="mb-3">
-        <label for="endereco_entrega" class="form-label">Endereço de Entrega <span class="text-danger">*</span></label>
+        <label for="endereco_entrega" class="form-label">Endereço de Entrega <span class="text-danger"></span></label>
         <textarea class="form-control" id="endereco_entrega" name="endereco_entrega" rows="3" required>{{ old('endereco_entrega', $dado->endereco_entrega) }}</textarea>
     </div>
 
@@ -91,7 +76,7 @@
             <div class="col-md-4">
                 <label for="produto_0_quantidade" class="form-label">Quantidade <span class="text-danger">*</span></label>
                 <input type="number" class="form-control" id="produto_0_quantidade" name="produtos[0][quantidade]"
-                        value="{{ old('produtos.0.quantidade', 1) }}" min="1" required>
+                       value="{{ old('produtos.0.quantidade', 1) }}" min="1" required>
             </div>
         </div>
     @else
@@ -128,7 +113,6 @@
         <button type="submit" class="btn text-white" style="background-color: #718c5e;">
             {{ $dado->id ? 'Atualizar Pedido' : 'Finalizar Pedido' }}
         </button>
-
         <a href="{{ route('pedidos.index') }}" class="btn text-white" style="background-color: #384236;">Voltar</a>
     </div>
 

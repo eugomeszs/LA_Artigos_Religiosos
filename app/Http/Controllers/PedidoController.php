@@ -7,6 +7,8 @@ use App\Models\Cliente;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Charts\ValorTotalPorDia;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PedidoController extends Controller
 {
@@ -20,13 +22,13 @@ class PedidoController extends Controller
         if ($request->has('busca')) {
             $busca = $request->input('busca');
             $query->where('id', 'like', "%{$busca}%")
-                  ->orWhereHas('cliente', function ($q) use ($busca) {
-                      $q->where('nome', 'like', "%{$busca}%");
-                  });
+                ->orWhereHas('cliente', function ($q) use ($busca) {
+                    $q->where('nome', 'like', "%{$busca}%");
+                });
         }
 
-        $pedidos = $query->latest()->get(); 
-        
+        $pedidos = $query->latest()->get();
+
         return view('pedido.pedidos', compact('pedidos'));
     }
 
@@ -37,9 +39,7 @@ class PedidoController extends Controller
     {
         $clientes = Cliente::all();
         $produtos = Produto::all();
-        
         $dado = new Pedido();
-
         return view('pedido.pedidoCadastrar', compact('dado', 'clientes', 'produtos'));
     }
 
@@ -50,9 +50,9 @@ class PedidoController extends Controller
     {
         $request->validate([
             'cliente_id' => 'required|exists:clientes,id',
-            'endereco_entrega' => 'required|string',
+            'endereco_de_entrega' => 'nullable|string',
             'produtos' => 'required|array',
-            'produtos.0.id' => 'required|exists:produtos,id', 
+            'produtos.0.id' => 'required|exists:produtos,id',
             'produtos.0.quantidade' => 'required|integer|min:1',
         ]);
 
@@ -61,16 +61,15 @@ class PedidoController extends Controller
 
             $pedido = Pedido::create([
                 'cliente_id' => $request->cliente_id,
-                'data_pedido' => now(), 
-                'endereco_entrega' => $request->endereco_entrega,
-                'status' => 'Pendente',
-                'valor_total' => 0.00, 
+                'data_pedido' => now(),
+                'endereco_de_entrega' => $request->endereco_de_entrega,
+                'valor_total' => 0.00,
             ]);
 
             $valorTotal = 0;
             $item = $request->produtos[0];
             $produto = Produto::findOrFail($item['id']);
-                
+
             $quantidade = $item['quantidade'];
             $precoUnitario = $produto->preco;
             $subtotal = $quantidade * $precoUnitario;
@@ -87,7 +86,6 @@ class PedidoController extends Controller
             DB::commit();
 
             return redirect()->route('pedidos.index')->with('success', 'Pedido criado com sucesso!');
-
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->with('error', 'Erro ao criar o pedido: ' . $e->getMessage())->withInput();
@@ -111,9 +109,7 @@ class PedidoController extends Controller
         $clientes = Cliente::all();
         $produtos = Produto::all();
         $pedido->load('produtos');
-        
         $dado = $pedido;
-
         return view('pedido.pedidoCadastrar', compact('dado', 'clientes', 'produtos'));
     }
 
@@ -123,11 +119,11 @@ class PedidoController extends Controller
     public function update(Request $request, Pedido $pedido)
     {
         $request->validate([
-            'status' => 'required|string|max:50',
-            'endereco_entrega' => 'required|string',
+            // 'status' => 'required|string|max:50', // Removido
+            'endereco_de_entrega' => 'nullable|string',
         ]);
 
-        $pedido->update($request->only('status', 'endereco_entrega'));
+        $pedido->update($request->only('endereco_de_entrega')); // 'status' removido
 
         return redirect()->route('pedidos.index')->with('success', 'Pedido atualizado com sucesso!');
     }
@@ -139,5 +135,19 @@ class PedidoController extends Controller
     {
         $pedido->delete();
         return redirect()->route('pedidos.index')->with('success', 'Pedido deletado com sucesso!');
+    }
+
+    public function chartValor(ValorTotalPorDia $chart)
+    {
+        return view('pedido.chartValorTotal', ['chart' => $chart->build()]);
+    }
+
+    public function gerarReport()
+    {
+        $pedidos = Pedido::with('cliente')->latest()->get();
+        $pdf = PDF::loadView('pedido.report', [
+            'pedidos' => $pedidos
+        ]);
+        return $pdf->stream('relatorio_pedidos.pdf');
     }
 }

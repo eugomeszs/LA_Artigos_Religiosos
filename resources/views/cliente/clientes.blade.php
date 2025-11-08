@@ -11,7 +11,7 @@
 <h2 class="mb-4">Lista de Clientes</h2>
 
 <a href="{{ route('clientes.create') }}" class="btn text-white mb-3" style="background-color: #718c5e;">
-    Novo Cliente
+    <i class="bi bi-plus-lg"></i> Novo Cliente
 </a>
 
 <form action="{{ route('clientes.index') }}" method="GET" class="mb-3">
@@ -24,7 +24,7 @@
 <table class="table table-hover table-bordered">
     <thead>
         <tr>
-            <th scope="col"></th>
+            <th scope="col">Perfil</th>
             <th scope="col">Nome</th>
             <th scope="col">CPF</th>
             <th scope="col">E-mail</th>
